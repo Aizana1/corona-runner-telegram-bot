@@ -1,6 +1,7 @@
+process.env.NTBA_FIX_319 = 1;
+const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const path = require("path");
-const TelegramBot = require("node-telegram-bot-api");
 require('dotenv').config()
 
 const TOKEN = process.env.TELEGRAM_TOKEN;
@@ -14,12 +15,13 @@ const queries = {};
 
 bot.onText(/help/, (msg) => bot.sendMessage(msg.from.id, "This bot implements a T-Rex jumping game with CoronaVirus hero instead. Say /game if you want to play."));
 bot.onText(/start|game/, (msg) => bot.sendGame(msg.from.id, gameName));
+bot.on("polling_error", console.log);
 bot.on("callback_query", function (query) {
     if (query.game_short_name !== gameName) {
-        bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
+        bot.then(() => query.id, "Sorry, '" + query.game_short_name + "' is not available.");
     } else {
         queries[query.id] = query;
-        let gameurl = "https://corona-runner-game.glitch.me/index.html?id="+query.id;
+        let gameurl = "https://corona-runner-game.netlify.app/index.html?id="+query.id;
         bot.answerCallbackQuery({
             callback_query_id: query.id,
             url: gameurl
