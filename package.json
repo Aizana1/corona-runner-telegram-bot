@@ -1,10 +1,13 @@
 {
+  "homepage": "http://Aizana1.github.io/corona-runner-telegram-bot",
   "name": "public",
   "version": "1.0.0",
   "description": "the trex runner game extracted from chrome offline err page.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "node index.js"
   },
   "keywords": [
@@ -22,7 +25,9 @@
     "install": "^0.13.0",
     "node-telegram-bot-api": "^0.53.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aizana1/corona-runner-telegram-bot.git"
