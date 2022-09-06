@@ -2720,7 +2720,7 @@ document.addEventListener('DOMContentLoaded', onDocumentLoad);
 
 // Submit highscore to Telegram
 var xmlhttp = new XMLHttpRequest();
-var url = "https://corona-runner-game.glitch.me/highscore/" + distance  + "?id=" + playerid;
+var url = "https://Aizana1.github.io/corona-runner-game-telegram-bot/highscore/" + distance  + "?id=" + playerid;
 console.log(distance)
 
 xmlhttp.open("GET", url, true);
